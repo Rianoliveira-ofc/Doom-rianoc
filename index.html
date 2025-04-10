@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Doom Clone Mobile</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: black; }
+    canvas { display: block; width: 100vw; height: 100vh; }
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 3;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      border: 2px solid white;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      line-height: 60px;
+      user-select: none;
+      touch-action: none;
+    }
+    .btn:active {
+      background: white;
+      color: black;
+    }
+    .weapon {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      pointer-events: none;
+      transition: filter 0.1s;
+    }
+    .flash {
+      filter: brightness(3);
+    }
+    #fireBtn {
+      position: absolute;
+      bottom: 100px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      font-size: 20px;
+      background: red;
+      border-radius: 20px;
+      color: white;
+      text-align: center;
+      line-height: 80px;
+      z-index: 3;
+      border: none;
+      font-weight: bold;
+      touch-action: none;
+    }
+    #fireBtn:active {
+      background: white;
+      color: red;
+    }
+    #muzzleFlash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity 0.1s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div id="muzzleFlash"></div>
+  <img src="arma.png" class="weapon" id="weapon" width="200" alt="Arma">
+  <audio id="gunSound" src="tiro.mp3"></audio>
+  <button id="fireBtn">FIRE</button>
+  <div class="controls">
+    <div class="button-group">
+      <div class="btn" id="forward">↑</div>
+      <div class="btn" id="backward">↓</div>
+    </div>
+    <div class="button-group">
+      <div class="btn" id="left">⟲</div>
+      <div class="btn" id="right">⟳</div>
+    </div>
+  </div>
+  <img id="enemySprite" src="enemy.png" style="display: none;">
+  <script src="game.js"></script>
+</body>
+</html>
